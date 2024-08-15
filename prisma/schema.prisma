@@ -1,0 +1,118 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid()) @db.Uuid
+  userId            String  @map("user_id") @db.Uuid
+  type              String
+  provider          String
+  providerAccountId String  @map("provider_account_id")
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid()) @db.Uuid
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id") @db.Uuid
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verificationtokens")
+}
+
+model Customer {
+  id         String    @id @default(uuid()) @db.Uuid
+  name       String
+  phone      String
+  email      String    @unique
+  cnpj       String    @unique
+  created_at DateTime? @default(now())
+
+  userId String? @db.Uuid
+  User   User?   @relation(fields: [userId], references: [id])
+
+  tickets Ticket[]
+}
+
+model Ticket {
+  id          String         @id @default(uuid()) @db.Uuid
+  title       String
+  description String
+  status      StatusTicket   @default(OPEN)
+  type        TypeTicket
+  category    CategoryTicket
+  priority    Priority
+  updated_at  DateTime?      @default(now())
+
+  customerId String?   @db.Uuid
+  customer   Customer? @relation(fields: [customerId], references: [id])
+
+  userId String? @db.Uuid
+  User   User?   @relation(fields: [userId], references: [id])
+}
+
+model User {
+  id            String     @id @default(uuid()) @db.Uuid
+  name          String?
+  email         String?    @unique
+  emailVerified DateTime?  @map("email_verified")
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  tickets       Ticket[]
+  customers     Customer[]
+
+  @@map("users")
+}
+
+enum TypeTicket {
+  INCIDENT
+  REQUEST
+  PROBLEM
+  CHANGE
+}
+
+enum CategoryTicket {
+  HARDWARE
+  SOFTWARE
+  NETWORK
+  GENERAL_SUPPORT
+}
+
+enum Priority {
+  LOW
+  AVERAGE
+  HIGH
+  CRITICAL
+}
+
+enum StatusTicket {
+  OPEN
+  FINISH
+}

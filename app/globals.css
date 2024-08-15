@@ -17,3 +17,10 @@ body {
   background-color: #f8fafc;
   color: #475569;
 }
+
+button {
+  border-radius: 0.5rem;
+  height: 2.25rem;
+  padding-inline: 1rem;
+  font-weight: 700;
+}

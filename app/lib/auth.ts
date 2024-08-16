@@ -4,6 +4,12 @@ import { db } from "./prisma"
 import { Adapter } from "next-auth/adapters"
 import GoogleProvider from "next-auth/providers/google"
 
+export type UserData = {
+  id: string
+  name: string
+  email: string
+}
+
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(db) as Adapter,
   providers: [
@@ -17,7 +23,7 @@ export const authOptions: AuthOptions = {
       session.user = {
         ...session.user,
         id: user.id,
-      } as any
+      } as UserData
       return session
     },
   },

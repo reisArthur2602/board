@@ -1,23 +1,23 @@
-import type { Metadata } from "next"
-import { Nunito } from "next/font/google"
-import "./globals.css"
-import { Header } from "./components/header"
-import AuthProvider from "./providers/auth"
+import type { Metadata } from 'next';
+import { Nunito } from 'next/font/google';
+import './globals.css';
+import { Header } from './components/header';
+import AuthProvider from './providers/auth';
 
-const nunito = Nunito({ subsets: ["latin"] })
+const nunito = Nunito({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Dashboard - Mais que atender, entender",
-  description: "Gerencie sua empresa, atendimentos e clientes",
+  title: 'Dashboard - Mais que atender, entender',
+  description: 'Gerencie sua empresa, atendimentos e clientes',
   icons: {
-    icon: "/board-favicon.svg",
+    icon: '/board-favicon.svg',
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -30,5 +30,5 @@ export default function RootLayout({
         </AuthProvider>
       </body>
     </html>
-  )
+  );
 }

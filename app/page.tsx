@@ -1,6 +1,6 @@
-import React from "react"
-import { Container } from "./components/container"
-import Image from "next/image"
+import React from 'react';
+import { Container } from './components/container';
+import Image from 'next/image';
 
 const Home = () => {
   return (
@@ -8,7 +8,7 @@ const Home = () => {
       <section>
         <div className="mb-14 flex flex-col items-center justify-center gap-3">
           <h1>
-            Mais que atender, {""}
+            Mais que atender, {''}
             <span className="font-black text-cyan-500">ENTENDER.</span>
           </h1>
           <p className="text-2xl">
@@ -23,7 +23,7 @@ const Home = () => {
         />
       </section>
     </Container>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { normalizeCNPJ, normalizePhoneNumber } from '@/app/utils/masks';
+import { CreateCustomer } from '@/app/actions/customer/create-customer';
 
 const FormCustomerSchema = z.object({
   email: z
@@ -57,8 +58,12 @@ export const FormCustomer = ({ userId }: { userId: string }) => {
   const handleCreateCustomer = async (
     data: z.infer<typeof FormCustomerSchema>,
   ) => {
-    console.log(data, userId);
-    reset();
+    try {
+      await CreateCustomer({ ...data, userId }).then(() => reset());
+      console.log('Cliente cadastrado com sucesso!');
+    } catch (error) {
+      console.log('Falha ao cadastrar cliente');
+    }
   };
 
   return (

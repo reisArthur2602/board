@@ -31,7 +31,7 @@ const FormCustomerSchema = z.object({
     ),
 });
 
-export const FormCustomer = () => {
+export const FormCustomer = ({ userId }: { userId: string }) => {
   const {
     register,
     handleSubmit,
@@ -57,7 +57,7 @@ export const FormCustomer = () => {
   const handleCreateCustomer = async (
     data: z.infer<typeof FormCustomerSchema>,
   ) => {
-    console.log(data);
+    console.log(data, userId);
     reset();
   };
 

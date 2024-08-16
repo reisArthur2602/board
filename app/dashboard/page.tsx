@@ -35,7 +35,7 @@ const Dashboard = async () => {
         </div>
 
         <div className="w-full overflow-x-auto">
-          <table className="table-fixed *:w-full *:text-left">
+          <table className="w-full min-w-[56.25rem] *:w-full *:text-left">
             <thead>
               <tr>
                 {TABLE_HEAD.map((h, index) => (
@@ -49,23 +49,19 @@ const Dashboard = async () => {
               </tr>
             </thead>
             <tbody>
-              {tickets &&
-                tickets.map((t) => (
-                  <tr
-                    key={t.id}
-                    className="border-t border-solid *:px-3 *:py-4"
-                  >
-                    <td>{t.customer?.name}</td>
-                    <td>{formatCategory(t.category)}</td>
-                    <td>{formatType(t.type)}</td>
-                    <td>{formatPriority(t.priority)}</td>
-                    <td>
-                      {t.updated_at &&
-                        format(t.updated_at, 'MMMM dd, yyyy', { locale: ptBR })}
-                    </td>
-                    <td>{t.User?.name}</td>
-                  </tr>
-                ))}
+              {tickets.map((t) => (
+                <tr key={t.id} className="border-t border-solid *:px-3 *:py-4">
+                  <td className="capitalize">{t.customer?.name}</td>
+                  <td>{formatCategory(t.category)}</td>
+                  <td>{formatType(t.type)}</td>
+                  <td>{formatPriority(t.priority)}</td>
+                  <td className="capitalize">
+                    {t.updated_at &&
+                      format(t.updated_at, 'MMMM dd, yyyy', { locale: ptBR })}
+                  </td>
+                  <td className="capitalize">{t.User?.name}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

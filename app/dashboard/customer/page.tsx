@@ -14,7 +14,7 @@ const Customer = async () => {
   ];
 
   const customers = await db.customer.findMany();
-  console.log(customers);
+
   return (
     <Container>
       <section className="mt-14 flex flex-col gap-6">

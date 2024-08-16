@@ -21,7 +21,7 @@ const Customer = async () => {
         <div className="flex items-center justify-between">
           <h1>Clientes</h1>
           <button className="bg-cyan-500 text-slate-50">
-            <Link href="/dashboard/new">Cadastrar Cliente</Link>
+            <Link href="/dashboard/customer/new">Cadastrar Cliente</Link>
           </button>
         </div>
 

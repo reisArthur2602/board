@@ -58,7 +58,7 @@ const Customer = async () => {
                   <td>
                     <Link href={`/dashboard/customer/${c.id}`}>{c.email}</Link>
                   </td>
-                  <td>
+                  <td className="capitalize">
                     <Link href={`/dashboard/customer/${c.id}`}>
                       {c.created_at &&
                         format(c.created_at, 'MMMM dd, yyyy', {

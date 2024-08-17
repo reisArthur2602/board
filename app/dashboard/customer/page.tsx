@@ -26,7 +26,7 @@ const Customer = async () => {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[56.25rem] *:w-full *:text-left">
+          <table className="w-full min-w-[56.25rem] text-sm *:w-full *:text-left">
             <thead>
               <tr>
                 {TABLE_HEAD.map((h, index) => (
@@ -43,18 +43,28 @@ const Customer = async () => {
             <tbody>
               {customers.map((c) => (
                 <tr
-                  className="cursor-pointer border-t border-solid *:px-3 *:py-4 hover:bg-slate-950/5"
+                  className="border-t border-solid *:px-3 *:py-4 hover:bg-slate-950/5"
                   key={c.id}
                 >
-                  <td className="capitalize">{c.name}</td>
-                  <td>{c.phone}</td>
-                  <td>{c.cnpj}</td>
-                  <td>{c.email}</td>
                   <td className="capitalize">
-                    {c.created_at &&
-                      format(c.created_at, 'MMMM dd, yyyy', {
-                        locale: ptBR,
-                      })}
+                    <Link href={`/dashboard/customer/${c.id}`}>{c.name}</Link>
+                  </td>
+                  <td>
+                    <Link href={`/dashboard/customer/${c.id}`}>{c.phone}</Link>
+                  </td>
+                  <td>
+                    <Link href={`/dashboard/customer/${c.id}`}>{c.cnpj}</Link>
+                  </td>
+                  <td>
+                    <Link href={`/dashboard/customer/${c.id}`}>{c.email}</Link>
+                  </td>
+                  <td>
+                    <Link href={`/dashboard/customer/${c.id}`}>
+                      {c.created_at &&
+                        format(c.created_at, 'MMMM dd, yyyy', {
+                          locale: ptBR,
+                        })}
+                    </Link>
                   </td>
                 </tr>
               ))}

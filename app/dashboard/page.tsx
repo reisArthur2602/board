@@ -35,7 +35,7 @@ const Dashboard = async () => {
         </div>
 
         <div className="w-full overflow-x-auto">
-          <table className="w-full min-w-[56.25rem] *:w-full *:text-left">
+          <table className="w-full min-w-[56.25rem] text-sm *:w-full *:text-left">
             <thead>
               <tr>
                 {TABLE_HEAD.map((h, index) => (

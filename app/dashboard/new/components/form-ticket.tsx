@@ -1,40 +1,62 @@
+'use client';
 import { BackButton } from '@/app/components/back-button';
 import { Input } from '@/app/components/input';
+import { Customer } from '@prisma/client';
 import React from 'react';
 
-export const FormTicket = () => {
+type FormTicketProps = {
+  // userId: string;
+  customers: Customer[];
+};
+
+export const FormTicket = ({ customers }: FormTicketProps) => {
+  const isDisableInput = customers.length === 0;
+
   return (
     <form className="flex flex-col gap-6">
       <Input label="Cliente">
-        <Input.Select>
+        <Input.Select disabled={isDisableInput}>
           <option value="">Selecione um Cliente</option>
+          {customers &&
+            customers.map((customer) => (
+              <option value={customer.id} key={customer.id}>
+                {customer.name}
+              </option>
+            ))}
         </Input.Select>
       </Input>
 
       <div className="flex items-center gap-3">
         <Input label="Tipo">
-          <Input.Select>
+          <Input.Select disabled={isDisableInput}>
             <option value="">Selecione um Tipo</option>
           </Input.Select>
         </Input>
 
         <Input label="Categoria">
-          <Input.Select disabled>
+          <Input.Select disabled={isDisableInput}>
             <option value="">Selecione uma Categoria</option>
           </Input.Select>
         </Input>
+
         <Input label="Prioridade">
-          <Input.Select>
+          <Input.Select disabled={isDisableInput}>
             <option value="">Selecione uma Prioridade</option>
           </Input.Select>
         </Input>
       </div>
 
       <Input label="Título">
-        <Input.Field placeholder="Título do chamado..." />
+        <Input.Field
+          placeholder="Título do chamado..."
+          disabled={isDisableInput}
+        />
       </Input>
       <Input label="Descrição">
-        <Input.Textarea placeholder="Descreva o seu problema..." />
+        <Input.Textarea
+          placeholder="Descreva o seu problema..."
+          disabled={isDisableInput}
+        />
       </Input>
 
       <div className="flex items-center justify-between">

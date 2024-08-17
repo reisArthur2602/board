@@ -1,3 +1,5 @@
+'use client';
+import { FinishTicket } from '@/app/actions/ticket/finish-ticket';
 import {
   formatCategory,
   formatPriority,
@@ -15,6 +17,17 @@ type InfoTicketProps = {
 };
 
 export const InfoTicket = ({ ticket }: InfoTicketProps) => {
+  const handleFinishTicket = () => {
+    try {
+      if (ticket)
+        FinishTicket(ticket.id).then(() =>
+          console.log('O Chamado foi finalizado com sucesso'),
+        );
+    } catch (error) {
+      console.log('Falha ao finalizar chamado');
+    }
+  };
+
   return (
     <section className="flex flex-col gap-14">
       {/* TITLE AND BUTTONS */}
@@ -31,7 +44,10 @@ export const InfoTicket = ({ ticket }: InfoTicketProps) => {
           <button className="border border-solid text-slate-800">
             Excluir
           </button>
-          <button className="bg-cyan-500 text-slate-50">
+          <button
+            className="bg-cyan-500 text-slate-50"
+            onClick={handleFinishTicket}
+          >
             Finalizar Chamado
           </button>
         </div>

@@ -1,3 +1,5 @@
+'use client';
+import { DeleteCustomer } from '@/app/actions/customer/delete-customer';
 import {
   formatCategory,
   formatPriority,
@@ -23,9 +25,16 @@ export const InfoCustomer = ({ customer }: InfoCustomerProps) => {
     { label: 'Responsável' },
   ];
 
+  const handleDeleteCustomer = () => {
+    try {
+      if (customer) DeleteCustomer(customer.id);
+    } catch (error) {
+      console.log('Falha ao deletar cliente');
+    }
+  };
+
   return (
     <section className="flex flex-col gap-14">
-      {/* title and button action */}
       <div className="flex justify-between">
         <div>
           <h1>{customer?.id}</h1>
@@ -35,7 +44,12 @@ export const InfoCustomer = ({ customer }: InfoCustomerProps) => {
               format(customer.created_at, 'MMMM dd, yyyy', { locale: ptBR })}
           </span>
         </div>
-        <button className="bg-cyan-500 text-slate-50">Excluir Cliente</button>
+        <button
+          className="bg-cyan-500 text-slate-50"
+          onClick={handleDeleteCustomer}
+        >
+          Excluir Cliente
+        </button>
       </div>
 
       <div className="flex flex-col">

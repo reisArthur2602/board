@@ -9,6 +9,7 @@ import { CalendarIcon } from '@heroicons/react/16/solid';
 import { Prisma } from '@prisma/client';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale/pt-BR';
+import Link from 'next/link';
 
 type InfoCustomerProps = {
   customer: Prisma.CustomerGetPayload<{
@@ -90,20 +91,40 @@ export const InfoCustomer = ({ customer }: InfoCustomerProps) => {
             </tr>
           </thead>
           <tbody>
-            {customer?.tickets.map((t) => (
+            {customer?.tickets.map((ticket) => (
               <tr
-                key={t.id}
+                key={ticket.id}
                 className="cursor-pointer border-t border-solid *:px-3 *:py-4 hover:bg-slate-950/5"
               >
-                <td>{formatType(t.type)}</td>
-                {/* <td className="capitalize">{t.customer?.name}</td> */}
-                <td>{formatCategory(t.category)}</td>
-                <td>{formatPriority(t.priority)}</td>
-                <td className="capitalize">
-                  {t.updated_at &&
-                    format(t.updated_at, 'MMMM dd, yyyy', { locale: ptBR })}
+                <td>
+                  <Link href={`/dashboard/${ticket.id}`}>
+                    {formatCategory(ticket.category)}
+                  </Link>
                 </td>
-                <td className="capitalize">{t.User?.name}</td>
+
+                <td>
+                  <Link href={`/dashboard/${ticket.id}`}>
+                    {formatType(ticket.type)}
+                  </Link>
+                </td>
+                <td>
+                  <Link href={`/dashboard/${ticket.id}`}>
+                    {formatPriority(ticket.priority)}
+                  </Link>
+                </td>
+                <td className="capitalize">
+                  <Link href={`/dashboard/${ticket.id}`}>
+                    {ticket.updated_at &&
+                      format(ticket.updated_at, 'MMMM dd, yyyy', {
+                        locale: ptBR,
+                      })}
+                  </Link>
+                </td>
+                <td className="capitalize">
+                  <Link href={`/dashboard/${ticket.id}`}>
+                    {ticket.User?.name}
+                  </Link>
+                </td>
               </tr>
             ))}
           </tbody>

@@ -1,4 +1,5 @@
 'use client';
+import { DeleteTicket } from '@/app/actions/ticket/delete-ticket';
 import { FinishTicket } from '@/app/actions/ticket/finish-ticket';
 import {
   formatCategory,
@@ -21,10 +22,21 @@ export const InfoTicket = ({ ticket }: InfoTicketProps) => {
     try {
       if (ticket)
         FinishTicket(ticket.id).then(() =>
-          console.log('O Chamado foi finalizado com sucesso'),
+          console.log('O Chamado foi finalizado com sucesso!'),
         );
     } catch (error) {
       console.log('Falha ao finalizar chamado');
+    }
+  };
+
+  const handleDeleteTicket = () => {
+    try {
+      if (ticket)
+        DeleteTicket(ticket.id).then(() =>
+          console.log('O Chamado foi removido com sucesso!'),
+        );
+    } catch (error) {
+      console.log('Falha ao remover chamado');
     }
   };
 
@@ -41,7 +53,10 @@ export const InfoTicket = ({ ticket }: InfoTicketProps) => {
           </span>
         </div>
         <div className="flex items-center gap-6">
-          <button className="border border-solid text-slate-800">
+          <button
+            className="border border-solid text-slate-800"
+            onClick={handleDeleteTicket}
+          >
             Excluir
           </button>
           <button

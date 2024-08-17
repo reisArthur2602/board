@@ -40,6 +40,7 @@ select {
   background: none;
   color: #020617;
   width: 100%;
+  outline: none;
 }
 
 input::placeholder,
@@ -51,4 +52,11 @@ input:focus,
 textarea:focus,
 select:focus {
   border-color: #020617;
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }

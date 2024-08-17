@@ -1,42 +1,46 @@
 import React, { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+interface FieldProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+interface InputProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   helperText?: string;
+  label: string;
 }
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, helperText, ...props }: InputProps, ref) => {
-    const InputErrorStyle = 'border-red-500 placeholder:text-red-500';
-    const LabelErrorStyle = 'text-red-500';
+const Input = ({ children, helperText, label, ...props }: InputProps) => {
+  const errorStyle = 'text-red-500 *:border-red-500';
 
+  return (
+    <label
+      {...props}
+      className={twMerge(
+        'flex w-full flex-col gap-3 font-bold text-slate-800 outline-none',
+        helperText && errorStyle,
+      )}
+    >
+      <>{label}</>
+
+      {children}
+
+      {helperText && <p className="text-xs">{helperText}</p>}
+    </label>
+  );
+};
+
+const Field = forwardRef<HTMLInputElement, FieldProps>(
+  ({ ...props }: FieldProps, ref) => {
     return (
-      <label className="flex w-full flex-col gap-3">
-        <span
-          className={twMerge(
-            'font-bold text-slate-800',
-            helperText && LabelErrorStyle,
-          )}
-        >
-          {label}
-        </span>
-        <input
-          ref={ref}
-          className={twMerge(
-            'h-[2.875rem] w-full rounded-lg border border-solid bg-transparent px-4 text-slate-950 outline-none placeholder:text-slate-600 focus:border-slate-600',
-            helperText && InputErrorStyle,
-          )}
-          {...props}
-        />
-        {helperText && (
-          <p className="text-xs font-bold text-red-500">{helperText}</p>
-        )}
-      </label>
+      <input
+        className="font-normal placeholder:text-slate-600"
+        {...props}
+        ref={ref}
+      />
     );
   },
 );
 
-Input.displayName = 'Input';
+Field.displayName = 'Field';
+Input.Field = Field;
 
 export { Input };

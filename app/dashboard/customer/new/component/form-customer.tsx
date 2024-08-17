@@ -72,33 +72,25 @@ export const FormCustomer = ({ userId }: { userId: string }) => {
       onSubmit={handleSubmit(handleCreateCustomer)}
     >
       <div className="flex items-center gap-3">
-        <Input
-          label="Email"
-          placeholder="email@email.com"
-          helperText={errors.email?.message}
-          {...register('email')}
-        />
-        <Input
-          label="Nome"
-          placeholder="Ex: Arthur Reis"
-          helperText={errors.name?.message}
-          {...register('name')}
-        />
+        <Input label="Email" helperText={errors.email?.message}>
+          <Input.Field placeholder="email@email.com" {...register('email')} />
+        </Input>
+
+        <Input label="Nome" helperText={errors.name?.message}>
+          <Input.Field placeholder="Ex: Arthur Reis" {...register('name')} />
+        </Input>
       </div>
+
       <div className="flex items-center gap-3">
-        <Input
-          label="Telefone"
-          placeholder="(xx) xxxxx-xxxx"
-          {...register('phone')}
-          helperText={errors.phone?.message}
-        />
-        <Input
-          label="CNPJ"
-          placeholder="xx.xxx.xxx/xxxx-xx"
-          helperText={errors.cnpj?.message}
-          {...register('cnpj')}
-        />
+        <Input label="Telefone" helperText={errors.phone?.message}>
+          <Input.Field placeholder="(xx) xxxxx-xxxx" {...register('phone')} />
+        </Input>
+
+        <Input label="Nome" helperText={errors.name?.message}>
+          <Input.Field placeholder="xx.xxx.xxx/xxxx-xx" {...register('cnpj')} />
+        </Input>
       </div>
+
       <div className="flex items-center justify-between">
         <BackButton href="/dashboard/customer" />
         <button className="bg-cyan-500 text-slate-50">Cadastrar Cliente</button>

@@ -31,4 +31,24 @@ h1 {
   color: #1e293b;
 }
 
+input,
+textarea,
+select {
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  padding: 0.625rem 16px;
+  background: none;
+  color: #020617;
+  width: 100%;
+}
 
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: #475569;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #020617;
+}

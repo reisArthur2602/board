@@ -1,6 +1,6 @@
 import { Container } from '@/app/components/container';
 import { NavMenu } from '@/app/components/nav-menu';
-import { FormCustomer } from './component/form-customer';
+import { FormCustomer } from './components/form-customer';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/lib/auth';
 

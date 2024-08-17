@@ -50,7 +50,10 @@ const Dashboard = async () => {
             </thead>
             <tbody>
               {tickets.map((t) => (
-                <tr key={t.id} className="border-t border-solid *:px-3 *:py-4">
+                <tr
+                  key={t.id}
+                  className="cursor-pointer border-t border-solid *:px-3 *:py-4 hover:bg-slate-950/5"
+                >
                   <td className="capitalize">{t.customer?.name}</td>
                   <td>{formatCategory(t.category)}</td>
                   <td>{formatType(t.type)}</td>

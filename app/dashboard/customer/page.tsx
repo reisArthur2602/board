@@ -42,14 +42,19 @@ const Customer = async () => {
 
             <tbody>
               {customers.map((c) => (
-                <tr key={c.id} className="border-t border-solid *:px-3 *:py-4">
+                <tr
+                  className="cursor-pointer border-t border-solid *:px-3 *:py-4 hover:bg-slate-950/5"
+                  key={c.id}
+                >
                   <td className="capitalize">{c.name}</td>
                   <td>{c.phone}</td>
                   <td>{c.cnpj}</td>
                   <td>{c.email}</td>
                   <td className="capitalize">
                     {c.created_at &&
-                      format(c.created_at, 'MMMM dd, yyyy', { locale: ptBR })}
+                      format(c.created_at, 'MMMM dd, yyyy', {
+                        locale: ptBR,
+                      })}
                   </td>
                 </tr>
               ))}

@@ -17,8 +17,8 @@ const DetailsTicket = async ({ params }: DetailsTicketProps) => {
     { href: '/dashboard/customer', label: 'Detalhes do Chamado' },
   ];
   return (
-    <Container>
-      <div className="my-14">
+    <Container className="py-14">
+      <div className="mb-14">
         <NavMenu paths={paths} />
       </div>
       <InfoTicket ticket={ticket} />

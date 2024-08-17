@@ -18,16 +18,15 @@ const NewTicket = async () => {
   const user_id = session?.user.id as string;
 
   return (
-    <Container>
-      <div className="my-14">
+    <Container className="py-14">
+      <div className="mb-14">
         <NavMenu paths={paths} />
       </div>
 
       <section>
         <h1 className="mb-6">Informações do chamado</h1>
+        <FormTicket customers={customers} userId={user_id} />
       </section>
-
-      <FormTicket customers={customers} userId={user_id} />
     </Container>
   );
 };

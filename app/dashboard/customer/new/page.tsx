@@ -15,15 +15,15 @@ const NewCustomer = async () => {
   const user_id = session?.user.id as string;
 
   return (
-    <Container>
-      <div className="my-14">
+    <Container className="py-14">
+      <div className="mb-14">
         <NavMenu paths={paths} />
       </div>
 
       <section>
         <h1 className="mb-6">Dados Pessoais</h1>
+        <FormCustomer userId={user_id} />
       </section>
-      <FormCustomer userId={user_id} />
     </Container>
   );
 };

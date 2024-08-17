@@ -21,8 +21,8 @@ const DetailsCustomer = async ({ params }: DetailsCustomerProps) => {
   ];
 
   return (
-    <Container>
-      <div className="my-14">
+    <Container className="py-14">
+      <div className="mb-14">
         <NavMenu paths={paths} />
       </div>
       <InfoCustomer customer={customer} />

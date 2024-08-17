@@ -54,15 +54,35 @@ const Dashboard = async () => {
                   key={t.id}
                   className="cursor-pointer border-t border-solid *:px-3 *:py-4 hover:bg-slate-950/5"
                 >
-                  <td className="capitalize">{t.customer?.name}</td>
-                  <td>{formatCategory(t.category)}</td>
-                  <td>{formatType(t.type)}</td>
-                  <td>{formatPriority(t.priority)}</td>
                   <td className="capitalize">
-                    {t.updated_at &&
-                      format(t.updated_at, 'MMMM dd, yyyy', { locale: ptBR })}
+                    <Link href={`/dashboard/${t.id}`}>{t.customer?.name}</Link>
                   </td>
-                  <td className="capitalize">{t.User?.name}</td>
+
+                  <td>
+                    <Link href={`/dashboard/${t.id}`}>
+                      {formatCategory(t.category)}
+                    </Link>
+                  </td>
+
+                  <td>
+                    <Link href={`/dashboard/${t.id}`}>
+                      {formatType(t.type)}
+                    </Link>
+                  </td>
+                  <td>
+                    <Link href={`/dashboard/${t.id}`}>
+                      {formatPriority(t.priority)}
+                    </Link>
+                  </td>
+                  <td className="capitalize">
+                    <Link href={`/dashboard/${t.id}`}>
+                      {t.updated_at &&
+                        format(t.updated_at, 'MMMM dd, yyyy', { locale: ptBR })}
+                    </Link>
+                  </td>
+                  <td className="capitalize">
+                    <Link href={`/dashboard/${t.id}`}>{t.User?.name}</Link>
+                  </td>
                 </tr>
               ))}
             </tbody>

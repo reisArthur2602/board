@@ -13,7 +13,9 @@ const Customer = async () => {
     { label: 'Cadastro' },
   ];
 
-  const customers = await db.customer.findMany();
+  const customers = await db.customer.findMany({
+    orderBy: { created_at: 'desc' },
+  });
 
   return (
     <Container>

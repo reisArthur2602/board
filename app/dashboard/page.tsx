@@ -22,6 +22,7 @@ const Dashboard = async () => {
 
   const tickets = await db.ticket.findMany({
     include: { User: true, customer: true },
+    orderBy: { updated_at: 'desc' },
   });
 
   return (

@@ -1,18 +1,28 @@
+import {
+  formatCategory,
+  formatPriority,
+  formatType,
+} from '@/app/utils/format-table';
 import { CalendarIcon } from '@heroicons/react/16/solid';
-import { Customer, Ticket } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale/pt-BR';
 
-interface CustomerIncludesTickets extends Customer {
-  tickets: Ticket[];
-}
-
 type InfoCustomerProps = {
-  customer: CustomerIncludesTickets | null;
+  customer: Prisma.CustomerGetPayload<{
+    include: { tickets: { include: { User: true } } };
+  }> | null;
 };
 
 export const InfoCustomer = ({ customer }: InfoCustomerProps) => {
-  console.log(customer);
+  const TABLE_HEAD = [
+    { label: 'Tipo' },
+    { label: 'Categoria' },
+    { label: 'Prioridade' },
+    { label: 'Cadastro' },
+    { label: 'Responsável' },
+  ];
+
   return (
     <section className="flex flex-col gap-14">
       {/* title and button action */}
@@ -50,6 +60,40 @@ export const InfoCustomer = ({ customer }: InfoCustomerProps) => {
           <b>CNPJ:</b>
           <p>{customer?.cnpj}</p>
         </span>
+      </div>
+
+      <div>
+        <h3 className="mb-6 text-sm font-bold text-slate-800">CHAMADOS</h3>
+
+        <table className="w-full min-w-[56.25rem] text-sm *:w-full *:text-left">
+          <thead>
+            <tr>
+              {TABLE_HEAD.map((h, index) => (
+                <th key={index} className="px-3 py-4 font-bold text-slate-800">
+                  {h.label}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {customer?.tickets.map((t) => (
+              <tr
+                key={t.id}
+                className="cursor-pointer border-t border-solid *:px-3 *:py-4 hover:bg-slate-950/5"
+              >
+                <td>{formatType(t.type)}</td>
+                {/* <td className="capitalize">{t.customer?.name}</td> */}
+                <td>{formatCategory(t.category)}</td>
+                <td>{formatPriority(t.priority)}</td>
+                <td className="capitalize">
+                  {t.updated_at &&
+                    format(t.updated_at, 'MMMM dd, yyyy', { locale: ptBR })}
+                </td>
+                <td className="capitalize">{t.User?.name}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </section>
   );

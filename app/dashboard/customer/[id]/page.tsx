@@ -11,7 +11,7 @@ type DetailsCustomerProps = {
 const DetailsCustomer = async ({ params }: DetailsCustomerProps) => {
   const customer = await db.customer.findUnique({
     where: { id: params.id },
-    include: { tickets: true },
+    include: { tickets: { include: { User: true } } },
   });
 
   const paths = [

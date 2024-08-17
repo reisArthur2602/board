@@ -3,6 +3,8 @@ import { NavMenu } from '@/app/components/nav-menu';
 import React from 'react';
 import { FormTicket } from './components/form-ticket';
 import { db } from '@/app/lib/prisma';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/lib/auth';
 
 const NewTicket = async () => {
   const paths = [
@@ -11,6 +13,9 @@ const NewTicket = async () => {
   ];
 
   const customers = await db.customer.findMany();
+
+  const session = await getServerSession(authOptions);
+  const user_id = session?.user.id as string;
 
   return (
     <Container>
@@ -22,7 +27,7 @@ const NewTicket = async () => {
         <h1 className="mb-6">Informações do chamado</h1>
       </section>
 
-      <FormTicket customers={customers} />
+      <FormTicket customers={customers} userId={user_id} />
     </Container>
   );
 };

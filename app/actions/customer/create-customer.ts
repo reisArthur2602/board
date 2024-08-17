@@ -11,7 +11,7 @@ type CreateCustomerProps = {
 };
 
 export const CreateCustomer = async (data: CreateCustomerProps) => {
-  const customer = db.customer.create({ data });
+  const customer = await db.customer.create({ data });
   revalidatePath('/dashboard/customer');
   return customer;
 };

@@ -1,4 +1,5 @@
 'use client';
+import { CreateTicket } from '@/app/actions/ticket/create-ticket';
 import { BackButton } from '@/app/components/back-button';
 import { Input } from '@/app/components/input';
 import { CATEGORY_TICKET, PRIORITY, TYPE_TICKET } from '@/app/constants/ticket';
@@ -9,7 +10,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 type FormTicketProps = {
-  // userId: string;
+  userId: string;
   customers: Customer[];
 };
 
@@ -36,7 +37,7 @@ const FormTicketSchema = z.object({
   }),
 });
 
-export const FormTicket = ({ customers }: FormTicketProps) => {
+export const FormTicket = ({ customers, userId }: FormTicketProps) => {
   const isDisableInput = customers.length === 0;
 
   const {
@@ -49,10 +50,14 @@ export const FormTicket = ({ customers }: FormTicketProps) => {
   });
 
   const handleCreateTicket = async (data: z.infer<typeof FormTicketSchema>) => {
-    console.log(data);
-    reset();
+    try {
+      await CreateTicket({ ...data, userId }).then(() => reset());
+      console.log('Chamado cadastrado com sucesso!');
+    } catch (error) {
+      console.log('Falha ao cadastrar chamado');
+    }
   };
-  console.log(errors);
+
   return (
     <form
       className="flex flex-col gap-6"

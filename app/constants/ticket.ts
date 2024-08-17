@@ -11,7 +11,7 @@ export const PRIORITY = [
   { label: 'Crítica', value: 'CRITICAL' },
 ];
 export const TYPE_TICKET = [
-  { label: 'INCIDENT', value: 'INCIDENT' },
+  { label: 'Incidente', value: 'INCIDENT' },
   { label: 'Solicitação', value: 'REQUEST' },
   { label: 'Problema', value: 'PROBLEM' },
   { label: 'Mudança', value: 'CHANGE' },

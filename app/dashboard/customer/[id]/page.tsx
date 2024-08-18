@@ -10,7 +10,7 @@ type DetailsCustomerProps = {
 };
 
 const DetailsCustomer = async ({ params }: DetailsCustomerProps) => {
-  if (params.id) redirect('/dashboard/customer');
+  if (!params.id) return redirect('/dashboard/customer');
 
   const customer = await db.customer.findUnique({
     where: { id: params.id },

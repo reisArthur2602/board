@@ -3,12 +3,12 @@ import { MagnifyingGlassIcon } from '@heroicons/react/16/solid';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-export const Search = () => {
+export const SearchInput = () => {
   const [title, setTitle] = useState('');
   const router = useRouter();
 
   const handleSubmitSearch = () =>
-    router.push(`/dashboard/customer/search/${title}`);
+    router.push(`/dashboard/customer/search?title=${title}`);
 
   return (
     <div className="flex w-full max-w-[37.5rem] items-center gap-2">

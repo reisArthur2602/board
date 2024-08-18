@@ -4,13 +4,16 @@ import { db } from '@/app/lib/prisma';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale/pt-BR';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 type SearchResultsProps = {
-  params: { title: string };
+  searchParams: { title: string };
 };
-const SearchResults = async ({ params }: SearchResultsProps) => {
+const SearchResults = async ({ searchParams }: SearchResultsProps) => {
+  if (!searchParams.title) return redirect('/dashboard/customer');
+
   const customers = await db.customer.findMany({
-    where: { name: { contains: params.title, mode: 'insensitive' } },
+    where: { name: { contains: searchParams.title, mode: 'insensitive' } },
   });
 
   const TABLE_HEAD = [
@@ -23,7 +26,7 @@ const SearchResults = async ({ params }: SearchResultsProps) => {
 
   return (
     <Container className="py-14">
-      <h1 className="mb-6">Resultados para &quot;{params.title}&quot;</h1>
+      <h1 className="mb-6">Resultados para &quot;{searchParams.title}&quot;</h1>
       <table className="w-full min-w-[56.25rem] text-sm *:w-full *:text-left">
         <thead>
           <tr>

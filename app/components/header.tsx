@@ -4,7 +4,7 @@ import { Container } from './container';
 import Image from 'next/image';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
-import { Search } from './search';
+import { SearchInput } from './search-input';
 
 export const Header = () => {
   const handleLoginWithGoogleClick = () => signIn('google');
@@ -32,7 +32,7 @@ export const Header = () => {
 
         {status === 'authenticated' && (
           <>
-            <Search />
+            <SearchInput />
             <nav className="flex items-center gap-6">
               <Link href="/dashboard" className="hover:text-cyan-500">
                 Chamados

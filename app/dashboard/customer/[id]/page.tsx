@@ -3,12 +3,15 @@ import { NavMenu } from '@/app/components/nav-menu';
 import { db } from '@/app/lib/prisma';
 import React from 'react';
 import { InfoCustomer } from './components/info-customer';
+import { redirect } from 'next/navigation';
 
 type DetailsCustomerProps = {
   params: { id: string };
 };
 
 const DetailsCustomer = async ({ params }: DetailsCustomerProps) => {
+  if (params.id) redirect('/dashboard/customer');
+
   const customer = await db.customer.findUnique({
     where: { id: params.id },
     include: { tickets: { include: { User: true } } },

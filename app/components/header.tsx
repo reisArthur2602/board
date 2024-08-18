@@ -4,6 +4,7 @@ import { Container } from './container';
 import Image from 'next/image';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { Search } from './search';
 
 export const Header = () => {
   const handleLoginWithGoogleClick = () => signIn('google');
@@ -30,20 +31,23 @@ export const Header = () => {
         )}
 
         {status === 'authenticated' && (
-          <nav className="flex items-center gap-6">
-            <Link href="/dashboard" className="hover:text-cyan-500">
-              Chamados
-            </Link>
-            <Link href="/dashboard/customer" className="hover:text-cyan-500">
-              Clientes
-            </Link>
-            <button
-              className="bg-slate-800 text-slate-50"
-              onClick={handleLogoutWithClick}
-            >
-              Sair
-            </button>
-          </nav>
+          <>
+            <Search />
+            <nav className="flex items-center gap-6">
+              <Link href="/dashboard" className="hover:text-cyan-500">
+                Chamados
+              </Link>
+              <Link href="/dashboard/customer" className="hover:text-cyan-500">
+                Clientes
+              </Link>
+              <button
+                className="bg-slate-800 text-slate-50"
+                onClick={handleLogoutWithClick}
+              >
+                Sair
+              </button>
+            </nav>
+          </>
         )}
       </Container>
     </header>

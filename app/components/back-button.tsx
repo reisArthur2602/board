@@ -7,7 +7,7 @@ type BackButtonProps = {
 
 export const BackButton = ({ href }: BackButtonProps) => {
   return (
-    <button className="w-fit border border-solid px-1">
+    <button className="w-fit border border-solid px-1" type="button">
       <Link href={href}>
         <ChevronLeftIcon className="size-6" />
       </Link>

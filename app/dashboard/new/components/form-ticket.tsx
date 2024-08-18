@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Customer } from '@prisma/client';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { z } from 'zod';
 
 type FormTicketProps = {
@@ -52,9 +53,9 @@ export const FormTicket = ({ customers, userId }: FormTicketProps) => {
   const handleCreateTicket = async (data: z.infer<typeof FormTicketSchema>) => {
     try {
       await CreateTicket({ ...data, userId }).then(() => reset());
-      console.log('Chamado cadastrado com sucesso!');
+      toast.success('Chamado cadastrado com sucesso!');
     } catch (error) {
-      console.log('Falha ao cadastrar chamado');
+      toast.error('Falha ao cadastrar chamado');
     }
   };
 

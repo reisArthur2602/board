@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { normalizeCNPJ, normalizePhoneNumber } from '@/app/utils/masks';
 import { CreateCustomer } from '@/app/actions/customer/create-customer';
+import { toast } from 'react-toastify';
 
 const FormCustomerSchema = z.object({
   email: z
@@ -60,9 +61,9 @@ export const FormCustomer = ({ userId }: { userId: string }) => {
   ) => {
     try {
       await CreateCustomer({ ...data, userId }).then(() => reset());
-      console.log('Cliente cadastrado com sucesso!');
+      toast.success('Cliente cadastrado com sucesso!');
     } catch (error) {
-      console.log('Falha ao cadastrar cliente');
+      toast.error('Falha ao cadastrar cliente');
     }
   };
 

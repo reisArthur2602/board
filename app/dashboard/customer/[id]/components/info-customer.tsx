@@ -10,6 +10,7 @@ import { Prisma } from '@prisma/client';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale/pt-BR';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 type InfoCustomerProps = {
   customer: Prisma.CustomerGetPayload<{
@@ -28,9 +29,12 @@ export const InfoCustomer = ({ customer }: InfoCustomerProps) => {
 
   const handleDeleteCustomer = () => {
     try {
-      if (customer) DeleteCustomer(customer.id);
+      if (customer)
+        DeleteCustomer(customer.id).then(() =>
+          toast.success('Cliente deletado com sucesso!'),
+        );
     } catch (error) {
-      console.log('Falha ao deletar cliente');
+      toast.error('Falha ao deletar cliente');
     }
   };
 

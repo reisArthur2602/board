@@ -10,6 +10,7 @@ import { CalendarIcon } from '@heroicons/react/16/solid';
 import { Prisma } from '@prisma/client';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale/pt-BR';
+import { toast } from 'react-toastify';
 
 type InfoTicketProps = {
   ticket: Prisma.TicketGetPayload<{
@@ -22,10 +23,10 @@ export const InfoTicket = ({ ticket }: InfoTicketProps) => {
     try {
       if (ticket)
         FinishTicket(ticket.id).then(() =>
-          console.log('O Chamado foi finalizado com sucesso!'),
+          toast.success('O Chamado foi finalizado com sucesso!'),
         );
     } catch (error) {
-      console.log('Falha ao finalizar chamado');
+      toast.error('Falha ao finalizar chamado');
     }
   };
 
@@ -33,10 +34,10 @@ export const InfoTicket = ({ ticket }: InfoTicketProps) => {
     try {
       if (ticket)
         DeleteTicket(ticket.id).then(() =>
-          console.log('O Chamado foi removido com sucesso!'),
+          toast.success('O Chamado foi removido com sucesso!'),
         );
     } catch (error) {
-      console.log('Falha ao remover chamado');
+      toast.error('Falha ao remover chamado');
     }
   };
 
@@ -137,7 +138,7 @@ export const InfoTicket = ({ ticket }: InfoTicketProps) => {
           <p>{ticket?.User?.name}</p>
         </span>
 
-        <span className="flex items-center gap-3 border-t border-solid py-4 capitalize">
+        <span className="flex items-center gap-3 border-t border-solid py-4">
           <b>Email:</b>
           <p>{ticket?.User?.email}</p>
         </span>

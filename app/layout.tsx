@@ -5,6 +5,7 @@ import { Header } from './components/header';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import AuthProvider from './providers/auth';
+import { SidebarProvider } from './providers/sidebar';
 
 const nunito = Nunito({ subsets: ['latin'] });
 
@@ -25,15 +26,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={nunito.className}>
         <AuthProvider>
-          <div className="flex h-full flex-col">
-            <Header />
-            <div className="flex-1">{children}</div>
-            <ToastContainer
-              position="top-right"
-              autoClose={4000}
-              theme="dark"
-            />
-          </div>
+          <SidebarProvider>
+            <div className="flex h-full flex-col">
+              <Header />
+              <div className="flex-1">{children}</div>
+              <ToastContainer
+                position="top-right"
+                autoClose={4000}
+                theme="dark"
+              />
+            </div>
+          </SidebarProvider>
         </AuthProvider>
       </body>
     </html>

@@ -2,13 +2,14 @@
 import React from 'react';
 import { Container } from './container';
 import Image from 'next/image';
-import { signIn, signOut, useSession } from 'next-auth/react';
-import Link from 'next/link';
-import { SearchInput } from './search-input';
+import { signIn, useSession } from 'next-auth/react';
+import { Bars3Icon } from '@heroicons/react/20/solid';
+import { useSideBar } from '../providers/sidebar';
 
 export const Header = () => {
+  const { handleOpenSidebar } = useSideBar();
   const handleLoginWithGoogleClick = () => signIn('google');
-  const handleLogoutWithClick = () => signOut();
+
   const { status } = useSession();
 
   return (
@@ -31,23 +32,9 @@ export const Header = () => {
         )}
 
         {status === 'authenticated' && (
-          <>
-            <SearchInput />
-            <nav className="flex items-center gap-6">
-              <Link href="/dashboard" className="hover:text-cyan-500">
-                Chamados
-              </Link>
-              <Link href="/dashboard/customer" className="hover:text-cyan-500">
-                Clientes
-              </Link>
-              <button
-                className="bg-slate-800 text-slate-50"
-                onClick={handleLogoutWithClick}
-              >
-                Sair
-              </button>
-            </nav>
-          </>
+          <button onClick={handleOpenSidebar}>
+            <Bars3Icon className="size-6 text-slate-950" />
+          </button>
         )}
       </Container>
     </header>

@@ -72,7 +72,7 @@ export const FormCustomer = ({ userId }: { userId: string }) => {
       className="flex flex-col gap-6"
       onSubmit={handleSubmit(handleCreateCustomer)}
     >
-      <div className="flex items-center gap-3">
+      <div className="flex flex-col items-center gap-3 sm:flex-row">
         <Input label="Email" helperText={errors.email?.message}>
           <Input.Field placeholder="email@email.com" {...register('email')} />
         </Input>
@@ -82,7 +82,7 @@ export const FormCustomer = ({ userId }: { userId: string }) => {
         </Input>
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex flex-col items-center gap-3 sm:flex-row">
         <Input label="Telefone" helperText={errors.phone?.message}>
           <Input.Field placeholder="(xx) xxxxx-xxxx" {...register('phone')} />
         </Input>

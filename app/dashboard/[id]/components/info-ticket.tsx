@@ -44,10 +44,10 @@ export const InfoTicket = ({ ticket }: InfoTicketProps) => {
   return (
     <section className="flex flex-col gap-14">
       {/* TITLE AND BUTTONS */}
-      <div className="flex justify-between">
-        <div>
+      <div className="flex flex-col justify-between gap-6 sm:flex-row">
+        <div className="text-center sm:text-left">
           <h1>{ticket?.title}</h1>
-          <span className="flex items-center gap-3 capitalize">
+          <span className="flex items-center justify-center gap-3 capitalize sm:justify-start">
             <CalendarIcon className="size-4" />
             {ticket?.updated_at &&
               format(ticket.updated_at, 'MMMM dd, yyyy', { locale: ptBR })}
@@ -55,13 +55,13 @@ export const InfoTicket = ({ ticket }: InfoTicketProps) => {
         </div>
         <div className="flex items-center gap-6">
           <button
-            className="border border-solid text-slate-800"
+            className="w-full border border-solid text-slate-800 sm:w-fit"
             onClick={handleDeleteTicket}
           >
             Excluir
           </button>
           <button
-            className="bg-cyan-500 text-slate-50"
+            className="w-full bg-cyan-500 text-slate-50 sm:w-fit"
             onClick={handleFinishTicket}
           >
             Finalizar Chamado

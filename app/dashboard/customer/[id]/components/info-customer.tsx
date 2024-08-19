@@ -40,7 +40,7 @@ export const InfoCustomer = ({ customer }: InfoCustomerProps) => {
 
   return (
     <section className="flex flex-col gap-14">
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between gap-6 sm:flex-row">
         <div>
           <h1>{customer?.id}</h1>
           <span className="flex items-center gap-3 capitalize">
@@ -84,55 +84,60 @@ export const InfoCustomer = ({ customer }: InfoCustomerProps) => {
       <div>
         <h3 className="mb-6 text-sm font-bold text-slate-800">CHAMADOS</h3>
 
-        <table className="w-full min-w-[56.25rem] text-sm *:w-full *:text-left">
-          <thead>
-            <tr>
-              {TABLE_HEAD.map((h, index) => (
-                <th key={index} className="px-3 py-4 font-bold text-slate-800">
-                  {h.label}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {customer?.tickets.map((ticket) => (
-              <tr
-                key={ticket.id}
-                className="cursor-pointer border-t border-solid *:px-3 *:py-4 hover:bg-slate-950/5"
-              >
-                <td>
-                  <Link href={`/dashboard/${ticket.id}`}>
-                    {formatCategory(ticket.category)}
-                  </Link>
-                </td>
-
-                <td>
-                  <Link href={`/dashboard/${ticket.id}`}>
-                    {formatType(ticket.type)}
-                  </Link>
-                </td>
-                <td>
-                  <Link href={`/dashboard/${ticket.id}`}>
-                    {formatPriority(ticket.priority)}
-                  </Link>
-                </td>
-                <td className="capitalize">
-                  <Link href={`/dashboard/${ticket.id}`}>
-                    {ticket.updated_at &&
-                      format(ticket.updated_at, 'MMMM dd, yyyy', {
-                        locale: ptBR,
-                      })}
-                  </Link>
-                </td>
-                <td className="capitalize">
-                  <Link href={`/dashboard/${ticket.id}`}>
-                    {ticket.User?.name}
-                  </Link>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[56.25rem] text-sm *:w-full *:text-left">
+            <thead>
+              <tr>
+                {TABLE_HEAD.map((h, index) => (
+                  <th
+                    key={index}
+                    className="px-3 py-4 font-bold text-slate-800"
+                  >
+                    {h.label}
+                  </th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {customer?.tickets.map((ticket) => (
+                <tr
+                  key={ticket.id}
+                  className="cursor-pointer border-t border-solid *:px-3 *:py-4 hover:bg-slate-950/5"
+                >
+                  <td>
+                    <Link href={`/dashboard/${ticket.id}`}>
+                      {formatCategory(ticket.category)}
+                    </Link>
+                  </td>
+
+                  <td>
+                    <Link href={`/dashboard/${ticket.id}`}>
+                      {formatType(ticket.type)}
+                    </Link>
+                  </td>
+                  <td>
+                    <Link href={`/dashboard/${ticket.id}`}>
+                      {formatPriority(ticket.priority)}
+                    </Link>
+                  </td>
+                  <td className="capitalize">
+                    <Link href={`/dashboard/${ticket.id}`}>
+                      {ticket.updated_at &&
+                        format(ticket.updated_at, 'MMMM dd, yyyy', {
+                          locale: ptBR,
+                        })}
+                    </Link>
+                  </td>
+                  <td className="capitalize">
+                    <Link href={`/dashboard/${ticket.id}`}>
+                      {ticket.User?.name}
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   );

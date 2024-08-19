@@ -29,7 +29,7 @@ export default function RootLayout({
           <SidebarProvider>
             <div className="flex h-full flex-col">
               <Header />
-              <div className="flex-1">{children}</div>
+              <div className="sm:flex-1">{children}</div>
               <ToastContainer
                 position="top-right"
                 autoClose={4000}

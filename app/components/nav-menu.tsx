@@ -11,7 +11,7 @@ type NavMenuProps = {
 export const NavMenu = ({ paths }: NavMenuProps) => {
   return (
     <nav>
-      <ol className="flex gap-3 space-x-2">
+      <ol className="flex space-x-2 text-sm sm:text-base">
         {paths.map((path, index) => (
           <li key={index} className="flex items-center gap-3">
             {index < paths.length - 1 ? (

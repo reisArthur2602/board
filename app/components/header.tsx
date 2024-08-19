@@ -32,8 +32,11 @@ export const Header = () => {
         )}
 
         {status === 'authenticated' && (
-          <button onClick={handleOpenSidebar}>
-            <Bars3Icon className="size-6 text-slate-950" />
+          <button
+            onClick={handleOpenSidebar}
+            className="h-fit border border-solid p-1"
+          >
+            <Bars3Icon className="size-6 text-slate-800" />
           </button>
         )}
       </Container>

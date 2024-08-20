@@ -2,7 +2,15 @@ import React from 'react';
 import { Container } from './components/container';
 import Image from 'next/image';
 
-const Home = () => {
+import { redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth';
+import { authOptions } from './lib/auth';
+
+const Home = async () => {
+  const session = await getServerSession(authOptions);
+
+  if (session) redirect('/dashboard');
+
   return (
     <Container className="flex h-full items-center justify-center">
       <section>

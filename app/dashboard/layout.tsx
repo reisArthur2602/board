@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation';
 type PrivateLayoutProps = {
   children: ReactNode;
 };
+
 const PrivateLayout = async ({ children }: PrivateLayoutProps) => {
   const session = await getServerSession(authOptions);
   if (!session) redirect('/');

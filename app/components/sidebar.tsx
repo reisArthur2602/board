@@ -8,6 +8,7 @@ import {
 } from '@heroicons/react/20/solid';
 import Link from 'next/link';
 import { TicketIcon } from '@heroicons/react/20/solid';
+import { SearchInput } from './search-input';
 
 export const Sidebar = () => {
   const { data } = useSession();
@@ -28,6 +29,7 @@ export const Sidebar = () => {
           </button>
         </div>
 
+        <SearchInput />
         <nav className="flex flex-1 flex-col justify-between py-8 *:w-full">
           <div className="flex flex-col gap-3 font-bold">
             <Link

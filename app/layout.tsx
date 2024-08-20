@@ -23,13 +23,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body className={nunito.className}>
         <AuthProvider>
           <SidebarProvider>
             <div className="flex h-full flex-col">
               <Header />
-              <div className="sm:flex-1">{children}</div>
+              <div className="flex-1">{children}</div>
               <ToastContainer
                 position="top-right"
                 autoClose={4000}

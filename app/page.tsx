@@ -11,7 +11,7 @@ const Home = () => {
             Mais que atender, {''}
             <span className="font-black text-cyan-500">ENTENDER.</span>
           </h1>
-          <p className="text-2xl">
+          <p className="sm:text-2xl">
             Gerencie sua empresa , atendimentos e clientes
           </p>
         </div>

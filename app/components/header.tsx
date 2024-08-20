@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+
 import { Container } from './container';
 import Image from 'next/image';
 import { signIn, useSession } from 'next-auth/react';

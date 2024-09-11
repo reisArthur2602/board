@@ -87,7 +87,7 @@ export const FormCustomer = ({ userId }: { userId: string }) => {
           <Input.Field placeholder="(xx) xxxxx-xxxx" {...register('phone')} />
         </Input>
 
-        <Input label="Nome" helperText={errors.name?.message}>
+        <Input label="CNPJ" helperText={errors.name?.message}>
           <Input.Field placeholder="xx.xxx.xxx/xxxx-xx" {...register('cnpj')} />
         </Input>
       </div>

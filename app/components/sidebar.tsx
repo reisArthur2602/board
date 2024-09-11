@@ -17,9 +17,7 @@ export const Sidebar = () => {
 
   return (
     <div className="fixed inset-0 h-full w-full bg-slate-950/55">
-      <aside
-        className={`fixed inset-y-0 right-0 flex h-full w-full transform flex-col overflow-y-hidden bg-slate-950 p-8 text-slate-600 sm:w-[25rem]`}
-      >
+      <aside className="fixed inset-y-0 right-0 flex h-full w-full transform flex-col overflow-y-hidden bg-slate-950 p-8 text-slate-600 sm:w-[25rem]">
         <div className="flex items-center justify-between border-b border-solid border-slate-800 pb-6">
           <h2 className="font-bold capitalize text-slate-50">
             👋🏽 Olá!, {data?.user.name}

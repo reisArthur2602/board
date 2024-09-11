@@ -31,9 +31,9 @@ export default function RootLayout({
               <Header />
               <div className="flex-1">{children}</div>
               <ToastContainer
-                position="top-right"
+                position="bottom-right"
                 autoClose={4000}
-                theme="dark"
+                theme="light"
               />
             </div>
           </SidebarProvider>

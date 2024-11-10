@@ -10,14 +10,18 @@
     <b>Desenvolvimento de um sistema de atendimento ao cliente</b>
 </p>
 
-
 <h2 id="layout">🎨 Layout</h2>
 
 <p align="center">
-    <img src="./public/screens/login.png" alt="Tela de login" width="600px">
-    <img src="./public/screens/home.png" alt="Tela principal" width="600px">
+    <img src="./public/screens/login.png" alt="Tela de login" width="320px">
+    <img src="./public/screens/sidebar.png" alt="Tela com o sidebar aberto" width="320px">
+    <img src="./public/screens/home.png" alt="Tela de chamados" width="320px">
+    <img src="./public/screens/register-order.png" alt="Tela de registro de chamado" width="320px">
+    <img src="./public/screens/details-order.png" alt="Tela de detalhes de um chamado" width="320px">
+    <img src="./public/screens/clients.png" alt="Tela de clientes" width="320px">
+    <img src="./public/screens/register-client.png" alt="Tela de registro de um cliente" width="320px">
+    <img src="./public/screens/details-client.png" alt="Tela de detalhes de um cliente" width="320px">
     
-  
 </p>
 
 <h2 id="technologies">💻 Tecnologias</h2>
@@ -47,9 +51,9 @@ Use o`.env.example` como referência para criar seu arquivo de configuração `.
 
 ```yaml
 DATABASE_URL="postgresql://janedoe:mypassword@localhost:5432/mydb"
-GOOGLE_CLIENT_ID= GOOGLE_CLIENT_ID
-GOOGLE_CLIENT_SECRET= GOOGLE_CLIENT_SECRET
-NEXT_AUTH_SECRET= NEXT_AUTH_SECRET
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+NEXT_AUTH_SECRET=
 ```
 
 <h3>Rodar o Projeto</h3>
@@ -64,4 +68,3 @@ npm run dev
 <h3>Design</h3>
 
 [🖊️ Protótipo no Figma](https://www.figma.com/design/JvFPx5drXAi4Z8dMLzPcsK/Board?node-id=0-1&t=puMuvjRseogsSRVY-1)
-

@@ -60,3 +60,8 @@ npm install
 npx prisma migrate dev
 npm run dev
 ```
+
+<h3>Design</h3>
+
+[🖊️ Protótipo no Figma](https://www.figma.com/design/JvFPx5drXAi4Z8dMLzPcsK/Board?node-id=0-1&t=puMuvjRseogsSRVY-1)
+

@@ -13,14 +13,14 @@
 <h2 id="layout">🎨 Layout</h2>
 
 <p align="center">
-    <img src="./public/screens/login.png" alt="Tela de login" width="320px">
-    <img src="./public/screens/sidebar.png" alt="Tela com o sidebar aberto" width="320px">
-    <img src="./public/screens/home.png" alt="Tela de chamados" width="320px">
-    <img src="./public/screens/register-order.png" alt="Tela de registro de chamado" width="320px">
-    <img src="./public/screens/details-order.png" alt="Tela de detalhes de um chamado" width="320px">
-    <img src="./public/screens/clients.png" alt="Tela de clientes" width="320px">
-    <img src="./public/screens/register-client.png" alt="Tela de registro de um cliente" width="320px">
-    <img src="./public/screens/details-client.png" alt="Tela de detalhes de um cliente" width="320px">
+    <img src="./public/screens/login.png" alt="Tela de login" width="380px">
+    <img src="./public/screens/sidebar.png" alt="Tela com o sidebar aberto" width="380px">
+    <img src="./public/screens/home.png" alt="Tela de chamados" width="380px">
+    <img src="./public/screens/register-order.png" alt="Tela de registro de chamado" width="380px">
+    <img src="./public/screens/details-order.png" alt="Tela de detalhes de um chamado" width="380px">
+    <img src="./public/screens/clients.png" alt="Tela de clientes" width="380px">
+    <img src="./public/screens/register-client.png" alt="Tela de registro de um cliente" width="380px">
+    <img src="./public/screens/details-client.png" alt="Tela de detalhes de um cliente" width="380px">
     
 </p>
 
